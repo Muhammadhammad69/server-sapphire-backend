@@ -39,15 +39,14 @@
 // module.exports = sequelize;
 
 
-console.log('DATABASE FILE LOADED');
-
 const { Sequelize } = require('sequelize');
-
-console.log('SEQUELIZE LOADED');
 
 require('dotenv').config();
 
-console.log('DOTENV LOADED');
+console.log('DATABASE FILE LOADED');
+console.log('SEQUELIZE LOADED');
+console.log('PG PATH:', require.resolve('pg'));
+console.log('PG VERSION:', require('pg/package.json').version);
 
 const sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -57,7 +56,6 @@ const sequelize = new Sequelize(
         host: process.env.DB_HOST,
         port: process.env.DB_PORT || 5432,
         dialect: 'postgres',
-
         dialectOptions: {
             ssl: {
                 require: true,
@@ -66,7 +64,5 @@ const sequelize = new Sequelize(
         }
     }
 );
-
-console.log('SEQUELIZE INSTANCE CREATED');
 
 module.exports = sequelize;
