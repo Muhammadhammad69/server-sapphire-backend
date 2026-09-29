@@ -22,7 +22,12 @@ sequelize.sync({ alter: true }).then(() => {
         console.log(`Server running on port ${PORT}`);
     });
 }).catch(err => console.log('Database connection error: ', err));
-
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Backend is working!'
+    });
+});
+module.exports = app;
 
 
 // const express = require('express');
